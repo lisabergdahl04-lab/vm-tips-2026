@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="logo">VM-Tips 2026</a>
+  </header>
+
+  <main class="page">
+    <section id="loginBox" class="intro-card">
+      <h1>Admin</h1>
+      <input id="passwordInput" type="password" placeholder="Lösenord" />
+      <button id="loginBtn" class="btn primary">Logga in</button>
+    </section>
+
+    <section id="adminPanel" class="intro-card hidden">
+      <h1>Markera resultat</h1>
+      <p>Välj rätt resultat efter varje match.</p>
+      <div id="adminMatches"></div>
+      
+      <h2 class="group-title">Spara gruppresultat</h2>
+      <div id="adminGroups"></div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

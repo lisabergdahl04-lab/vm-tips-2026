@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lägg in tips</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="logo">VM-Tips 2026</a>
+  </header>
+
+  <main class="page">
+    <section class="intro-card">
+      <h1>Lägg in ditt tips</h1>
+      <input id="playerName" type="text" placeholder="Ditt namn" />
+      <p id="progressText">0 matcher ifyllda</p>
+      <p class="lock-warning">Tipsen låses 11 juni 2026 kl. 00:00.</p>
+    </section>
+
+    <form id="predictionForm">
+      <div id="matchesContainer"></div>
+
+      <button type="submit" class="submit-bar">
+        Skicka in tips
+      </button>
+    </form>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="submit.js"></script>
+  <script src="data.js"></script>
+  <script type="module" src="submit.js"></script>
+</body>
+</html>
