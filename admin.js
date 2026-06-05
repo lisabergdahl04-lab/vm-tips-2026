@@ -134,7 +134,10 @@ function renderAdminGroups() {
           <li class="ranking-item" draggable="true" data-team="${team.name}">
             <span class="rank-number">${index + 1}</span>
             <span>${team.flag} ${team.name}</span>
-            <span class="drag-handle">☰</span>
+            <div class="rank-buttons">
+                <button type="button" class="move-up">↑</button>
+                <button type="button" class="move-down">↓</button>
+            </div>
           </li>
         `).join("")}
       </ul>
@@ -172,3 +175,24 @@ function renderAdminGroups() {
     });
   });
 }
+document.addEventListener("click", event => {
+  if (event.target.classList.contains("move-up")) {
+    const item = event.target.closest(".ranking-item");
+    const previous = item.previousElementSibling;
+
+    if (previous) {
+      item.parentNode.insertBefore(item, previous);
+      updateRankNumbers(item.parentNode);
+    }
+  }
+
+  if (event.target.classList.contains("move-down")) {
+    const item = event.target.closest(".ranking-item");
+    const next = item.nextElementSibling;
+
+    if (next) {
+      item.parentNode.insertBefore(next, item);
+      updateRankNumbers(item.parentNode);
+    }
+  }
+});

@@ -324,3 +324,19 @@ input {
 .tip-content.open {
   display: block;
 }
+.rank-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.rank-buttons button {
+  border: none;
+  background: #041f12;
+  color: white;
+  border-radius: 10px;
+  width: 34px;
+  height: 34px;
+  font-weight: 900;
+  cursor: pointer;
+}
