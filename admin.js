@@ -73,18 +73,19 @@ function renderAdminMatches() {
         return;
       }
 
-    await setDoc(
+      await setDoc(
         doc(db, "results", matchId),
         {
-            result: selected.value,
-            savedAt: new Date().toISOString()
+          result: selected.value,
+          savedAt: new Date().toISOString()
         }
-);
+      );
 
       alert("Resultatet sparades!");
     });
   });
 }
+
 function getGroups() {
   const groups = {};
 
@@ -127,16 +128,16 @@ function renderAdminGroups() {
 
     card.innerHTML = `
       <h3>${groupName}</h3>
-      <p>Dra lagen till rätt slutordning.</p>
+      <p>Använd pilarna för att flytta lagen till rätt slutordning.</p>
 
       <ul class="ranking-list admin-ranking-list" data-group="${groupName}">
         ${teams.map((team, index) => `
-          <li class="ranking-item" draggable="true" data-team="${team.name}">
+          <li class="ranking-item" data-team="${team.name}">
             <span class="rank-number">${index + 1}</span>
             <span>${team.flag} ${team.name}</span>
             <div class="rank-buttons">
-                <button type="button" class="move-up">↑</button>
-                <button type="button" class="move-down">↓</button>
+              <button type="button" class="move-up">↑</button>
+              <button type="button" class="move-down">↓</button>
             </div>
           </li>
         `).join("")}
@@ -150,11 +151,10 @@ function renderAdminGroups() {
     adminGroups.appendChild(card);
   });
 
-  activateDragAndDrop();
-
   document.querySelectorAll(".save-group-result").forEach(button => {
     button.addEventListener("click", async () => {
       const groupName = button.dataset.group;
+
       const list = document.querySelector(
         `.admin-ranking-list[data-group="${groupName}"]`
       );
@@ -175,6 +175,7 @@ function renderAdminGroups() {
     });
   });
 }
+
 document.addEventListener("click", event => {
   if (event.target.classList.contains("move-up")) {
     const item = event.target.closest(".ranking-item");
@@ -196,3 +197,11 @@ document.addEventListener("click", event => {
     }
   }
 });
+
+function updateRankNumbers(list) {
+  const items = list.querySelectorAll(".ranking-item");
+
+  items.forEach((item, index) => {
+    item.querySelector(".rank-number").textContent = index + 1;
+  });
+}
