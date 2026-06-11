@@ -7,7 +7,7 @@ import {
   getDocs
 } from "./firebase.js";
 
-const LOCK_DATE = new Date("2026-06-11T00:00:00");
+const LOCK_DATE = new Date("2026-06-12T00:00:00");
 const now = new Date();
 
 if (now >= LOCK_DATE) {
